@@ -20,6 +20,8 @@ Thumbs.db
 # Environment variables
 .env
 .env.local
+.direnv
+.envrc
 
 # Test artifacts
 /coverage/

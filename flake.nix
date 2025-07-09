@@ -53,12 +53,14 @@
           echo $(rustc --version)
           echo $(cargo --version)
           echo
+
           echo RUST_SRC_PATH = "${rustPlatform.rustLibSrc}";
         '';
 
 
         packages = with pkgs; [
           openssl
+          pkg-config # Needed by rust to find libraries
           just
           nushell
           glibc
