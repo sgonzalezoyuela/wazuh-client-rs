@@ -9,7 +9,7 @@
     rust-overlay,
     ...
   }: let
-    rustVersion = "1.86.0";
+    rustVersion = "1.89.0";
 
     allSystems = [
       "aarch64-linux"
