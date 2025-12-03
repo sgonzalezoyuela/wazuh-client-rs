@@ -9,8 +9,6 @@
     rust-overlay,
     ...
   }: let
-
-
     rustVersion = "1.86.0";
 
     allSystems = [
@@ -30,48 +28,9 @@
           };
         });
   in {
-    devShells = forEachSystem ({
-      pkgs,
-      system,
-    }: {
-      default = pkgs.mkShell {
-
-        shellHook = with pkgs; ''
-          echo
-          echo "🦾 QUASH Rust environment (rust: ${rustVersion})"
-          echo
-
-
-          echo ${rustc.name}
-          echo ${cargo.name}
-          echo
-          echo ${cargo-watch.name}
-          echo ${glibc.name}
-          echo ${nushell.name}
-          echo ${just.name}
-          echo
-          echo $(rustc --version)
-          echo $(cargo --version)
-          echo
-
-          echo RUST_SRC_PATH = "${rustPlatform.rustLibSrc}";
-        '';
-
-
-        packages = with pkgs; [
-          openssl
-          pkg-config # Needed by rust to find libraries
-          just
-          nushell
-          glibc
-	  pre-commit
-          (rust-bin.stable."${rustVersion}".default.override {
-            extensions = [
-              "rust-src"
-              "rust-analyzer"
-            ];
-          })
-        ];
+    devShells = forEachSystem ({pkgs, system}: {
+      default = import ./nix/devShell.nix {
+        inherit pkgs rustVersion;
       };
     });
   };
