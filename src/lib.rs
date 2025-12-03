@@ -30,7 +30,14 @@ pub use rules::{
     Decoder, DecoderDetails, DecoderPatternDetail, InfoDetail, PatternDetail, Rule, RuleDetails,
     RulesClient,
 };
-pub use vulnerability::{Package, Port, PortInfo, Process, Vulnerability, VulnerabilityClient, VulnerabilitySeverity};
+pub use vulnerability::{
+    BrowserExtensionPackage, BrowserInfo, FileHashInfo, GroupInfo, HardwareCpu, HardwareRam,
+    NetworkInterfacePackets, OSInfo, Package, Port, PortInfo, Process, ScanInfo, ServiceInfo,
+    SyscollectorBrowserExtension, SyscollectorGroup, SyscollectorHardware, SyscollectorHotfix,
+    SyscollectorNetworkAddress, SyscollectorNetworkInterface, SyscollectorNetworkProtocol,
+    SyscollectorOS, SyscollectorService, SyscollectorUser, UserInfo, Vulnerability,
+    VulnerabilityClient, VulnerabilitySeverity,
+};
 pub use wazuh_client::WazuhApiClient;
 
 pub use serde_json::Value as JsonValue;
